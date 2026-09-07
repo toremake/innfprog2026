@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheat Sheet for Arrays and Objects</title>
+</head>
+<body>
+    <h1>Array for bok med en forfatter</h1>
+    <ul>
+        <li>Tittel: <span id="book1TitleSpan"></span></li>
+        <li>Forfatter(e): <span id="book1AuthorSpan"></span></li>
+        <li>Antall sider: <span id="book1PageCountSpan"></span></li>
+    </ul>
+
+    <h1>Array for bok med flere forfattere</h1>
+    <ul>
+        <li>Tittel: <span id="book2TitleSpan"></span></li>
+        <li>Forfatter(e): <span id="book2AuthorSpan"></span></li>
+        <li>Antall sider: <span id="book2PageCountSpan"></span></li>
+    </ul>
+    
+    <h1>Object for bok</h1>
+    <ul>
+        <li>Tittel: <span id="book3TitleSpan"></span></li>
+        <li>Forfatter(e): <span id="book3AuthorSpan"></span></li>
+        <li>Antall sider: <span id="book3PageCountSpan"></span></li>
+    </ul>
+
+    <script>
+        //Array med bok med en forfatter
+        const book1 = [
+            "Fourth wing",
+            "Rebecka Yaris",
+            512
+        ]
+
+        //Array med bok med flere forfattere
+        const book2 = [
+            "Silver eyes",
+            "Scott Cawthon",
+            "Keira Wristley",
+            365
+        ]
+
+        //Object med bok
+        const book3 = {
+            title: "Harry Potter og de vises sten",
+            author: "JK Rowling",
+            pagecount: 333
+        }
+
+        //Print info fra book1 til HTML:
+        document.getElementById("book1TitleSpan").innerHTML = book1[0]
+        document.getElementById("book1AuthorSpan").innerHTML = book1[1]
+        document.getElementById("book1PageCountSpan").innerHTML = book1[2]
+    </script>
+</body>
+</html>

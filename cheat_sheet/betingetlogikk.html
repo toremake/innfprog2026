@@ -25,6 +25,11 @@
             loggedIn = true
             console.log(loggedIn)
         }
+
+        //Sjekk om en bruker er logget inn, og oppdater grensesnitt hvis den er det:
+        if(loggedIn) {
+            document.getElementById("loginStatus").innerHTML = "Hei, Marius"
+        }
     </script>
 </body>
 </html>
