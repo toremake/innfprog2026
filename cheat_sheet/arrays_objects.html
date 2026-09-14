@@ -54,6 +54,18 @@
         document.getElementById("book1TitleSpan").innerHTML = book1[0]
         document.getElementById("book1AuthorSpan").innerHTML = book1[1]
         document.getElementById("book1PageCountSpan").innerHTML = book1[2]
+
+        //Print info fra book2 til HTML:
+        document.getElementById("book2TitleSpan").innerHTML = book2[0]
+        document.getElementById("book2AuthorSpan").innerHTML = book2[1] + ", " + book2[2]
+        document.getElementById("book2PageCountSpan").innerHTML = book2[3]
+
+        //Print info fra book3 til HTML
+        //book3 er et object, vi må derfor referere til nøkler i stedet for indexer.
+        document.getElementById("book3TitleSpan").innerHTML = book3.title
+        document.getElementById("book3AuthorSpan").innerHTML = book3.author
+        document.getElementById("book3PageCountSpan").innerHTML = book3.pagecount
+
     </script>
 </body>
 </html>
