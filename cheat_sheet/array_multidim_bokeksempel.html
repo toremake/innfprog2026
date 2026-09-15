@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Cheat Sheet: Multidimensjonal array</title>
+</head>
+<body>
+    <h2>Referansetest</h2>
+    <p>Henter tittel på bok 3: <span id="book3Title"></span></p>
+    <p>Henter forfatter 2 på bok 2: <span id="book2Author2"></span></p>
+    <script>
+        const bokregister = [
+            {
+                title: "Fourth Wing",
+                author: ["Rebecca Yarros"],
+                pagecount: 512,
+                isbn: 9783423220996
+            },
+            {
+                title: "Silver Eyes",
+                author: ["Scott Cawthon", "Kira Wrisley"],
+                pagecount: 365,
+                isbn: 9781338134377
+            },
+            {
+                title: "Harry Potter: De vises sten",
+                author: ["JK Rowling"],
+                pagecount: 333,
+                isbn: 9788202434687
+            }
+        ]
+
+        console.log(bokregister)
+
+        //Henter tittel på bok 3:
+        document.getElementById("book3Title").innerHTML = bokregister[2].title
+        document.getElementById("book2Author2").innerHTML = bokregister[1].author.join(", ")
+    </script>
+</body>
+</html>
