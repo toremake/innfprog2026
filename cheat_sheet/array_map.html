@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheat sheet: Array.map()</title>
+</head>
+<body>
+    <h2>Bøker</h2>
+    <ul id="books">
+        <li>Ingen bøker registrert enda...</li>
+    </ul>
+
+    <h2>Bøker, konstruert med en HTML-variabel</h2>
+    <ul id="booksHTML">
+        <li>Ingen bøker registrert enda...</li>
+    </ul>
+    
+    <script>
+        const books = ["Fourth Wing", "Silver Eyes", "Harry Potter og de vises stein", "Harry Potter og mysteriekammeret"]
+        books.sort()
+
+        //Vi bruker map, som lagrer hver tittel i book og legger denne til listen med id books:
+        books.map(book => { document.getElementById("books").innerHTML += "<li>" + book + "</li>" } )
+
+        //Vi bruker map for å bygge en HTML-streng i koden vår, som vi senere skriver ut:
+        let booksHTML = ""
+        books.map(book => { booksHTML += "<li>" + book + "</li>" })
+        document.getElementById("booksHTML").innerHTML = booksHTML
+    </script>
+</body>
+</html>
