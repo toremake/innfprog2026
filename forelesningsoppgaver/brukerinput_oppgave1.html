@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brukerinput Oppgave 1</title>
+</head>
+<body>
+    <section>
+        <input type="text" name="firstname" id="firstname" placeholder="Fornavn" />
+        <button id="save">Lagre</button>
+    </section>
+    <h2>Navn:</h2>
+    <ul id="names">
+
+    </ul>
+
+    <script>
+        const names = ["Marius", "Trine", "Ole"]
+
+        function namePrint() {
+            let html = ""
+            names.map(name => { html += "<li>" + name + "</li>"})
+            document.getElementById("names").innerHTML = html
+        }
+
+        namePrint()
+
+        document.getElementById("save").addEventListener("click", function (event) {
+            event.preventDefault()
+            names.push(document.getElementById("firstname").value)
+            console.log(names)
+            namePrint()
+        })
+    </script>
+</body>
+</html>

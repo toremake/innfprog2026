@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheat sheet brukerinput for tastatur</title>
+</head>
+<body>
+    <p>Retning: <span id="direction"></span></p>
+    <ul id="tastetrykk">
+
+    </ul>
+    <ul id="tasteslipp">
+
+    </ul>
+    <script>
+        //Et event som sjekker etter når vi trykker NED en tast
+        document.addEventListener("keydown", function (event) {
+            document.getElementById("tastetrykk").innerHTML += `<li>Tasten ${event.key} med kode ${event.code} er trykket ned</li>`
+        })
+
+        //Et event som sjekker når vi slipper OPP en tast
+        document.addEventListener("keyup", function (event) {
+            document.getElementById("tasteslipp").innerHTML += `<li>Tasten ${event.key} med kode ${event.code} er sluppet opp</li>`
+        })
+
+        //Sjekke om piltaster er trykket ned, og bestemme retning:
+        let direction = ""
+        const pd = document.getElementById("direction")
+
+        document.addEventListener("keydown", function (event) {
+            if(event.key === "a") {
+                direction = "left"
+            }
+            if(event.key === "w") {
+                direction = "up"  
+            }
+            if(event.key === "s") {
+                direction = "down"
+            }
+            if(event.key === "d") {
+                direction = "right"
+            }
+            pd.innerHTML = direction
+        })
+
+        document.addEventListener("keyup", function (event) {
+            if(event.key === "a" || event.key === "w" || event.key === "s" || event.key === "d") {
+                direction = ""
+                pd.innerHTML = direction
+            }
+        })
+    </script>
+</body>
+</html>
