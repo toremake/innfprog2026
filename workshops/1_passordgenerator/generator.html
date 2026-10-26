@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop 1: Passordgenerator</title>
+</head>
+<body>
+    <main>
+        <h2>Passordgenerator</h2>
+        <button id="generer">Generer passord</button>
+        <p id="passordutskrift"></p>
+    </main>
+
+    <script>
+        //REGLER OG KONFIGURASJON
+        let passord = ""
+        const tillatteTegn = "abcdegfghijklmnopqrstuvwxyzæøåABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ0123456789"
+
+        document.getElementById("generer").addEventListener("click", function (event) {
+            //GENERER ET PASSORD
+            for(teller = 0; teller < 13; teller++) {
+                const tilfeldigTegn = Math.floor(Math.random() * tillatteTegn.length)
+            }
+            document.getElementById("passordutskrift").innerHTML = "Knappen er trykket"
+        })
+    </script>
+</body>
+</html>
