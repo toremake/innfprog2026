@@ -8,6 +8,10 @@
 <body>
     <main>
         <h2>Passordgenerator</h2>
+        <p>
+            <label for="lengde">Hvor langt skal passordet være?</label>
+            <input type="number" id="lengde" name="lengde" value="8" />
+        </p>
         <button id="generer">Generer passord</button>
         <p id="passordutskrift"></p>
     </main>
@@ -15,14 +19,28 @@
     <script>
         //REGLER OG KONFIGURASJON
         let passord = ""
-        const tillatteTegn = "abcdegfghijklmnopqrstuvwxyzæøåABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ0123456789"
+
+        const lowercase = "abcdegfghijklmnopqrstuvwxyzæøå"
+        const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ"
+        const numbers = "0123456789"
+        const specialChars = "!@*#$%&/()=? "
+
+        const tillatteTegn = ""
 
         document.getElementById("generer").addEventListener("click", function (event) {
+            //Tøm passord-variabel for å gjøre klar til nytt passord:
+            passord = ""
+            //Hente ut hvor langt passordet skal være:
+            const passordLengde = document.getElementById("lengde").value
             //GENERER ET PASSORD
-            for(teller = 0; teller < 13; teller++) {
+            for(teller = 0; teller < passordLengde; teller++) {
                 const tilfeldigTegn = Math.floor(Math.random() * tillatteTegn.length)
+                console.log(tilfeldigTegn, tillatteTegn[tilfeldigTegn])
+                passord += tillatteTegn[tilfeldigTegn]
             }
-            document.getElementById("passordutskrift").innerHTML = "Knappen er trykket"
+
+            document.getElementById("passordutskrift").innerHTML = passord
+
         })
     </script>
 </body>
