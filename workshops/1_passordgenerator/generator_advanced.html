@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop 1: Passordgenerator</title>
+</head>
+<body>
+    <main>
+        <h2>Passordgenerator</h2>
+        <p>
+            <label for="lengde">Hvor langt skal passordet være?</label>
+            <input type="number" id="lengde" name="lengde" value="8" />
+        </p>
+        <p>Velg hvilke tegn passordet skal bestå av:</p>
+        <button onclick="toggleAll()">Marker alle</button>
+        <ul>
+            <li><label><input type="checkbox" id="lowercase" checked /> Små bokstaver</label></li>
+            <li><label><input type="checkbox" id="uppercase" /> Store bokstaver</label></li>
+            <li><label><input type="checkbox" id="numbers" checked /> Tall</label></li>
+            <li><label><input type="checkbox" id="specialChars" /> Spesialtegn</label></li>
+        </ul>
+        <button id="generer">Generer passord</button>
+        <p id="passordutskrift"></p>
+    </main>
+
+    <script>
+        //REGLER OG KONFIGURASJON
+        let passord = ""
+
+        const lowercase = "abcdegfghijklmnopqrstuvwxyzæøå"
+        const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ"
+        const numbers = "0123456789"
+        const specialChars = "!@*#$%&/()=? "
+
+        let tillatteTegn = ""
+
+        
+        
+        function checkAll() {
+            document.getElementById("lowercase").checked = true
+            document.getElementById("uppercase").checked = true
+            document.getElementById("numbers").checked = true
+            document.getElementById("specialChars").checked = true
+        }
+        
+
+        function toggleAll() {
+            //Sjekk oppdaterte checked-statuser
+            const lc = document.getElementById("lowercase").checked
+            const uc = document.getElementById("uppercase").checked
+            const nu = document.getElementById("numbers").checked
+            const sc = document.getElementById("specialChars").checked
+
+            console.log("Startrun: ", lc, uc, nu, sc)
+            //Hvis alle checked-statuser er like, kan vi toggle. Hvis ikke...
+            if ( lc === uc  && nu === sc && sc === uc ) {
+                document.getElementById("lowercase").checked = !document.getElementById("lowercase").checked
+                document.getElementById("uppercase").checked = !document.getElementById("uppercase").checked
+                document.getElementById("numbers").checked = !document.getElementById("numbers").checked
+                document.getElementById("specialChars").checked = !document.getElementById("specialChars").checked
+            } else {
+                //...må vi sette alle til true.
+                checkAll()
+            }
+            
+        }
+
+        document.getElementById("generer").addEventListener("click", function (event) {
+            //Tømme tillatteTegn for nytt utvalg:
+            tillatteTegn = ""
+            //Sjekke hvilke kategorier som er valgt, og gjøre disse klare for utvalget:
+            //Finne verdi for checkbox: document.getElementById("ID").checked
+            if(document.getElementById("lowercase").checked === true) {
+                tillatteTegn += lowercase
+            }
+            //Vi tester på samme måte, men med syntaxen til en ternary operator:
+            document.getElementById("uppercase").checked ? tillatteTegn += uppercase : null
+            document.getElementById("numbers").checked ? tillatteTegn += numbers : null
+            document.getElementById("specialChars").checked ? tillatteTegn += specialChars : null
+
+            //Tøm passord-variabel for å gjøre klar til nytt passord:
+            passord = ""
+            //Hente ut hvor langt passordet skal være:
+            const passordLengde = document.getElementById("lengde").value
+            //GENERER ET PASSORD
+            for(teller = 0; teller < passordLengde; teller++) {
+                const tilfeldigTegn = Math.floor(Math.random() * tillatteTegn.length)
+                console.log(tilfeldigTegn, tillatteTegn[tilfeldigTegn])
+                passord += tillatteTegn[tilfeldigTegn]
+            }
+
+            document.getElementById("passordutskrift").innerHTML = passord
+
+        })
+    </script>
+</body>
+</html>

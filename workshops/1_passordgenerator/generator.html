@@ -12,6 +12,14 @@
             <label for="lengde">Hvor langt skal passordet være?</label>
             <input type="number" id="lengde" name="lengde" value="8" />
         </p>
+        <p>Velg hvilke tegn passordet skal bestå av:</p>
+        <button onclick="checkAll()">Velg alle</button>
+        <ul>
+            <li><label><input type="checkbox" id="lowercase" checked /> Små bokstaver</label></li>
+            <li><label><input type="checkbox" id="uppercase" /> Store bokstaver</label></li>
+            <li><label><input type="checkbox" id="numbers" checked /> Tall</label></li>
+            <li><label><input type="checkbox" id="specialChars" /> Spesialtegn</label></li>
+        </ul>
         <button id="generer">Generer passord</button>
         <p id="passordutskrift"></p>
     </main>
@@ -25,9 +33,34 @@
         const numbers = "0123456789"
         const specialChars = "!@*#$%&/()=? "
 
-        const tillatteTegn = ""
+        let tillatteTegn = ""
+
+        
+        function checkAll() {
+            document.getElementById("lowercase").checked = true
+            document.getElementById("uppercase").checked = true
+            document.getElementById("numbers").checked = true
+            document.getElementById("specialChars").checked = true
+        }
+        
+
+        function toggleAll() {
+            document.getElementById("lowercase").checked = !document.getElementById("lowercase").checked
+        }
 
         document.getElementById("generer").addEventListener("click", function (event) {
+            //Tømme tillatteTegn for nytt utvalg:
+            tillatteTegn = ""
+            //Sjekke hvilke kategorier som er valgt, og gjøre disse klare for utvalget:
+            //Finne verdi for checkbox: document.getElementById("ID").checked
+            if(document.getElementById("lowercase").checked === true) {
+                tillatteTegn += lowercase
+            }
+            //Vi tester på samme måte, men med syntaxen til en ternary operator:
+            document.getElementById("uppercase").checked ? tillatteTegn += uppercase : null
+            document.getElementById("numbers").checked ? tillatteTegn += numbers : null
+            document.getElementById("specialChars").checked ? tillatteTegn += specialChars : null
+
             //Tøm passord-variabel for å gjøre klar til nytt passord:
             passord = ""
             //Hente ut hvor langt passordet skal være:
