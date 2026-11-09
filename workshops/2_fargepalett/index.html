@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WS2: Fargepalett</title>
+    <style>
+        #colors {
+            width: 100%;
+            max-width: 900px;
+            margin: 100px auto;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        #colors > div {
+            box-sizing: border-box;
+            width: 31%;
+            height: 150px;
+            position: relative;
+        }
+
+        #colors > div > span {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: #ffffff;
+            padding: .5rem;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <section id="colors">
+
+    </section>
+
+    <script>
+        //Tillatte tegn i en hex-kode:
+        const chars = "ABCDEF0123456789"
+        //Gjør klar lagring av hex-koder
+        const hexCodes = []
+
+        //Lage en funksjon som returnerer en hex-kode:
+        function hexGenerator() {
+            //1: Lag klar en variabel som kan lagre hex-koden:
+            let hex = "#"
+            //2: gjøre et tilfeldig utvalg 6 ganger:
+            for(teller = 0; teller < 6; teller++) {
+                const randomChar = chars[Math.floor(Math.random() * 16)]
+                hex += randomChar
+            }
+            return hex
+        }
+
+        //Kjør hexGenerator 6 ganger, og lagre hvert resultat i hexCodes:
+        for(t = 0; t < 6; t++) {
+            hexCodes.push(hexGenerator())
+        }
+
+        //Skrive ut HTML-elementer til #colors for hver farge i hexCodes:
+        hexCodes.map((h, i) => {
+            document.getElementById("colors").innerHTML += `
+                <div style="background-color: ${h}">
+                    <span>${h}</span>
+                </div>
+            `
+        })
+    </script>
+</body>
+</html>
