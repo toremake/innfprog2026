@@ -19,6 +19,8 @@
             width: 31%;
             height: 150px;
             position: relative;
+            cursor: pointer;
+            cursor: hand;
         }
 
         #colors > div > span {
@@ -59,10 +61,15 @@
             hexCodes.push(hexGenerator())
         }
 
+
+        function testPrint(index) {
+            console.log("IT WORKS! Index: ", index)
+        }
+
         //Skrive ut HTML-elementer til #colors for hver farge i hexCodes:
         hexCodes.map((h, i) => {
             document.getElementById("colors").innerHTML += `
-                <div style="background-color: ${h}">
+                <div onClick="testPrint(${i})" style="background-color: ${h}">
                     <span>${h}</span>
                 </div>
             `
