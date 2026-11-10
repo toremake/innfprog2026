@@ -37,7 +37,7 @@
     <section id="colors">
 
     </section>
-
+    <button id="changeAll">Bytt ut alle farger</button>
     <script>
         //Tillatte tegn i en hex-kode:
         const chars = "ABCDEF0123456789"
@@ -61,19 +61,38 @@
             hexCodes.push(hexGenerator())
         }
 
-
-        function testPrint(index) {
-            console.log("IT WORKS! Index: ", index)
+        //Lage funksjon for å bytte farge på en bestemt index i hexCodes:
+        function changeHex(index) {
+            hexCodes.splice(index, 1, hexGenerator())
+            printColors()
         }
 
-        //Skrive ut HTML-elementer til #colors for hver farge i hexCodes:
-        hexCodes.map((h, i) => {
-            document.getElementById("colors").innerHTML += `
-                <div onClick="testPrint(${i})" style="background-color: ${h}">
-                    <span>${h}</span>
-                </div>
-            `
+        document.getElementById("changeAll").addEventListener("click", function () {
+            //Velg tre tilfeldige indexer mellom 0 og 5
+            
+            //Kjørt en .splice mot hexCodes for hver av de tre indexene
         })
+       
+
+        //Skrive ut HTML-elementer til #colors for hver farge i hexCodes:
+        function printColors() {
+            //Gjør klar variabel for å bygge HTML-streng
+            let colorHTML = ""
+            //Bruke .map for å bygge HTML-boks for hver farge i hexCodes-arrayen
+            hexCodes.map((h, i) => {
+                colorHTML += `
+                    <div onClick="changeHex(${i})" style="background-color: ${h}">
+                        <span>${h}</span>
+                    </div>
+                `
+            })
+            //Skrive ut ferdig HTML-streng til #colors
+            document.getElementById("colors").innerHTML = colorHTML
+        }
+
+        //Første kjøring av printColors når siden lastes inn:
+        printColors()
+        
     </script>
 </body>
 </html>
